@@ -1,2 +1,2 @@
-# basics-js
-Basics of js language. The tricky parts.
+# common-project-patterns
+Prezentacja o często używanych wzorcach projektowych
