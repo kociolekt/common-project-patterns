@@ -62,7 +62,7 @@
         </section>
         <section>
           <h2>Nie o tym</h2>
-          <p>Nic o teorii na temat</p>
+          <p>Nic będę porószał nic z teorii</p>
           <ul>
             <li>Obiektowość - paradygmat programowania w informatyce</li>
             <li>Klasa - definicja obiektu</li>
@@ -105,7 +105,9 @@
           { src: 'plugin/markdown/marked.js' },
           { src: 'plugin/markdown/markdown.js' },
           { src: 'plugin/notes/notes.js', async: true },
-          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'socket.io/socket.io.js', async: true },
+          { src: 'plugin/notes-server/client.js', async: true }
         ]
       });
     </script>
