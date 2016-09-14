@@ -33,39 +33,8 @@
         <section>
           <h2>Agenda</h2>
           <ul>
-            <li>Nie o tym</li>
-            <li>Toolbox</li>
-            <!--
-            // Duży projekt
-            //  Napisany w ostatnio bardzo popularnej architektórze mikroserwisów.
-                Jak na razie składa się z kilkunastu serwisów z czego 8 z nich
-                jako interfejs wykorzystuje technologie webowe.
-            // Test podejścia
-                Wraz z modułami es6 weszła możliwość wygodniejszego definiowania klas.
-                Postanowiłem sprawdzić jak sprawdzi się pisanie bardzo obiektowego kodu
-                I zacząłem trafiać na problemy związane z komunikacją pomiędzy
-                obiektami - przestałem orientować się który obiekt z którym się
-                komunikuje w którym momencie.
-            // Najpierw myślimy potem robimy
-                Więc zastanowiłem się chwilę i rozpisałem sobie Hierarchię obiektów i metod.
-                Okazało się że ktoś coś podobnego już zrobił kiedys i nawet nazwał to poziomami abstrakcji.
-            // Poziomy abstrakcji - Serwisy, strony, widgety, komponenty, pluginy
-                Analizując potrzeby projektu zauważyłem że łatwo można podzielić
-                go na "warstwy" o różnym stopniu szczegółowości.
-                W ten sposób skończyłem ze Splitem, Serwisem, Stroną, Widgetem,
-                Komponentem i Pluginem.
-                Do tego założyłem ograniczenia w wielkości klasy oraz metody.
-                300 linijek dla klasy i 20 linijek dla metody. Nie jest to gwarancją
-                poprawnych poziomów abstrakcji ale pomaga.
-                Do tego każdy z elementów dzielę na funkcjonalności a metody uruchamiające
-                funkcjonalności poprzedzam słowem init.
-                Po co o tym mowię? Ponieważ mimo zastosowania wszystkich
-                wspomnianych zabiegów okazało się że to i tak za mało aby utrzymać
-                pełą kontrolę nad przepływem informacji pomiędzy obiektami.
-            // Przykład w jajkiem
-
-            // Ograniczenie ilości linijek w funkcjach do 20 i klasach do 300-->
-
+            <li>O czym nie jest</li>
+            <li>Po co?</li>
             <li>Singleton</li>
             <!--// Napisać eveter oparty na DOM-->
             <li>Mediator</li>
@@ -82,8 +51,8 @@
           </ul>
         </section>
         <section>
-          <h2>Nie o tym</h2>
-          <p>Nic będę porószał nic z teorii</p>
+          <h2>O czym nie jest</h2>
+          <p>Dużo praktyki mało teorii</p>
           <ul>
             <li>Obiektowość - paradygmat programowania w informatyce</li>
             <li>Klasa - definicja obiektu</li>
@@ -98,10 +67,139 @@
             Nie powiem też że klasa jest częściową lub całkowitą definicja obiektu. Tak nawiasem mówiąc to nazwy klas pisze się wielką literą.
             Nie zamierzam też tłumaczyć że instancja jest pojedynczym wystąpieniem obiektu zgodnego z definicją zapisaną w Klasie.
             Nie chcę wspominać o dziedziczeniu jako mechanizmie współdzielenia fukcjonalności pomiędzy klsasami.
-            Ani mi w głowie mówić o ukrywanie pewnych spkładowych elementów obiektu przy pomocy hermetyzacji;
+            Ani mi w głowie mówić o ukrywanie pewnych składowych elementów obiektu przy pomocy hermetyzacji;
             a juz na pewno nie będę zanudzał was teorią na temat uniwersalnych sprawdzonych w praktyce rozwiązań powtarzalnych problemów projektowych.
             Wszystkie te elementy postaram się pokazać od strony praktycznej.
           </aside>
+        </section>
+        <section>
+          <section>
+            <h2>Po co?</h2>
+            <p>Do czego służą wzorce projektowe i po co nam one</p>
+            <ul>
+              <li>Jak to z Toolboxem było</li>
+              <li>Najpierw myślimy potem robimy</li>
+              <li>Poziomy abstrakcji</li>
+              <li>Przykład z jajkiem</li>
+              <li>I właśnie po to są wzorce</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Toolbox</h2>
+            <p>Duży projekt</p>
+            <a href="img/toolbox.png" target="_blank"><img src="img/toolbox.png" /></a>
+            <aside class="notes">
+              Napisany w ostatnio bardzo popularnej architektórze mikroserwisów.
+              Jak na razie składa się z kilkunastu serwisów z czego 8 z nich
+              jako interfejs wykorzystuje technologie webowe.
+              Wraz z modułami es6 weszła możliwość wygodniejszego definiowania klas.
+              Postanowiłem zobaczyć jak sprawdzi się pisanie bardzo obiektowego kodu
+              I zacząłem trafiać na problemy związane z komunikacją pomiędzy
+              obiektami - przestałem orientować się który obiekt z którym się
+              komunikuje w którym momencie.
+            </aside>
+          </section>
+          <section>
+            <h2>Najpierw myślimy potem robimy</h2>
+            <p>Warto poświęcić chwilę żeby się zastanowić nim siądzie się do kodu. Nawet z kartką i długopisem w ręku.</p>
+            <a href="img/toolbox.png" target="_blank"><img src="img/toolbox.png" /></a>
+            <aside class="notes">
+              Więc zastanowiłem się chwilę i rozpisałem sobie Hierarchię obiektów i metod.
+              Analizując potrzeby projektu zauważyłem że łatwo można podzielić
+              go na "warstwy" o różnym stopniu szczegółowości.
+              W ten sposób podział skończyłem ze Splitem, Serwisem, Stroną, Widgetem,
+              Komponentem i Pluginem.
+              Do tego założyłem ograniczenia w wielkości klasy oraz metody.
+              300 linijek dla klasy i 20 linijek dla metody.
+              Nie wspomnę już o zasadzie że jedna metoda powinna wykonywać jedną czynność.
+              Do tego każdy z elementów dzielę na funkcjonalności a metody uruchamiające
+              funkcjonalności poprzedzam słowem init.
+            </aside>
+          </section>
+          <section>
+            <h2>Poziomy abstrakcji</h2>
+            <p>Dodatkowy czinnik wpływający na jakość kodu.</p>
+            <aside class="notes">
+              Pozatym jest jeszcze jeden współczynnik który pomaga w organizacji
+              kodu. W jednej z książek nazwali go poziomem abstrakcji.
+              Pokażę to na przykładzie przepisu na jajecznicę.
+            </aside>
+          </section>
+          <section>
+            <h2>Przykład z jajkiem</h2>
+            <p>                Przepis na jajecznicę
+              - Rozpuścić masło na małej patelni
+              - Wrzucić na stopione masełko szynkę pokrojoną w małe kwadraciki oraz drobno posiekany szczypiorek
+              - rozbić ostrym nożem skorupki jajek i zawartość wylewać na patelnię
+              - Dodać trochę soli oraz pieprzu i mieszać, aż do momentu ścięcia się jajek
+
+              Często kodzie wygląda to tak:
+
+              dodaj(maslo)
+
+              while(maslo.nieJestStopione){
+              for( atom in atomyWProbceMasla){
+              atom.dostarczEnergii
+              }
+              }
+              dodaj(pokrojona Szynka)
+
+              while(szczypiorek.jestCaly){
+              oddziaływuj nożem na sieć krystaliczną szczypiorku
+              }
+
+              dodaj(szczypiorek)
+
+              noż.dodajEnerigiiPotencjalnej
+              noz.zamieńEnergięPotencjalnąNaKinetyczną
+              noż.uderzW(jajko)
+
+              dodaj(zawartośćJajka)
+
+              dodaj(sól)
+
+              for(ziarnkoPieprzu in szczyptaPipeprzu){
+              dodaj(ziarnkoPieprzu)
+              }
+
+              i mieszać, aż do momentu ścięcia się jajek
+
+              A powinno wyglądać tak:
+
+              patelnia.dodaj(maslo)
+              patelnia.podgrzejDoRostopieniaMasla()
+              patelnia.dodaj(pokroj(szynka))
+              patelnia.dodaj(pokroj(szczypiorek))
+              patelnia.dodaj(rozbij(jajko))
+              patelnia.dodaj(sól)
+              patelnia.dodaj(pieprz)
+              mieszajDoMomentuScieciaSieJajek(patelnia)</p>
+            <aside class="notes">
+              Przepis na jajecznicę
+              - Rozpuścić masło na małej patelni
+              - Wrzucić na stopione masełko szynkę pokrojoną w małe kwadraciki oraz drobno posiekany szczypiorek
+              - rozbić ostrym nożem skorupki jajek i zawartość wylewać na patelnię
+              - Dodać trochę soli oraz pieprzu i mieszać, aż do momentu ścięcia się jajek
+
+              i kod jak nie powinien i powinien wyglądać
+            </aside>
+          </section>
+          <section>
+            <h2>I właśnie po to są wzorce</h2>
+            <p>
+              Czasem nawet najładniej napisany kod nie obędzie się bez wzorców.
+            </p>
+            <aside class="notes">
+              Po co o tym mowię? Przecież to szkolenie o wzorcach.
+              Ponieważ mimo zastosowania wszystkich
+              wspomnianych zabiegów okazało się że to i tak za mało aby utrzymać
+              pełą kontrolę nad przepływem informacji pomiędzy obiektami.
+              Mówię tutaj nie tylko o czytelnym ale też o logicznie poprawnym
+              kodzie.
+
+              Z pomocą przyszły wzorce projektowe.
+            </aside>
+          </section>
         </section>
         <section>
           <h2>Źródło</h2>
