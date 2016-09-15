@@ -35,6 +35,98 @@
           <ul>
             <li>O czym nie jest</li>
             <li>Po co?</li>
+            <li>Obiektowość w praktyce</li>
+            <!--
+              // Tworzenie obiektów
+              //  {};
+              //  new Object();
+              //  Object.create(null);
+              // Definicja klasy
+
+                  Szkolenie z es6 było i kady pamięta jak definiuje się klasę
+
+                  class Shape {
+                    constructor() {
+                      this.x = 0;
+                      this.y = 0;
+                    }
+                    move(x, y) {
+                      this.x += x;
+                      this.y += y;
+                      console.info('Shape moved.');
+                    }
+                  }
+
+                  Obiekt tej klasy tworzy się poprzez
+                  let shape1 = new Shape();
+
+                  A metody tej klasy wywołujemy w ten sposób
+                  shape1.move(10, 10);
+
+              // Dziedziczenie
+                  Co jeżeli chcemy mieć kwadrat?
+
+                  class Square extends Shape {
+                    constructor() {
+                      super(); // Wywołanie konstruktora z Shape
+
+                      this.size = 10;
+                    }
+
+                    resize(size) {
+                      this.size = size;
+                    }
+                  }
+
+                  Tworzenie kwadratu
+                  let square1 = new Square();
+
+                  Wywołanie metody z Square
+                  square1.move(20, 20);
+
+               // Przesłanianie
+
+                   Chcemy narysować nasz kształt - definiujemy metodę draw
+
+                   class Shape {
+                     constructor() {
+                       this.x = 0;
+                       this.y = 0;
+                     }
+                     move(x, y) {
+                       this.x += x;
+                       this.y += y;
+                       console.info('Shape moved.');
+                     }
+                     draw(ctx) {
+                       ctx.fillRect(this.x, this.y, 1, 1);
+                     }
+                   }
+
+                   A co z kwadratem? Tam przecież dziedziczymy metodę draw.
+                   Możemy ją przesłonić.
+
+                   class Square extends Shape {
+                     constructor() {
+                       super(); // Wywołanie konstruktora z Shape
+
+                       this.size = 10;
+                     }
+                     resize(size) {
+                       this.size = size;
+                     }
+                     draw(ctx) {
+                       ctx.fillRect(this.x, this.y, this.size, this.size);
+                     }
+                   }
+
+                   Tworzenie kwadratu
+                   let square1 = new Square();
+
+                   Wywołanie metody draw z Square
+                   square1.draw(ctx);
+
+            -->
             <li>Singleton</li>
             <!--// Napisać eveter oparty na DOM-->
             <li>Mediator</li>
