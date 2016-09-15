@@ -1,1 +1,7 @@
-.idea
+*.log
+
+node_modules/
+.idea/
+dist/
+
+es6.zip

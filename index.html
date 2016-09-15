@@ -24,117 +24,42 @@
   <body>
     <div class="reveal">
       <div class="slides">
+
+        <!-- SLAJD TYTUŁOWY -->
         <section>
           <h1>Wzorce projektowe</h1>
           <h2>w praktyce</h2>
           <img src="https://pl.gravatar.com/userimage/96535938/f405f6eac9456fb4fe004bb989434528?size=200"/><br/>
           <a href="https://www.npmjs.com/~kociolekt">npm</a>, <a href="https://github.com/kociolekt">github</a>
         </section>
+
+        <!-- AGENDA -->
         <section>
           <h2>Agenda</h2>
           <ul>
             <li>O czym nie jest</li>
             <li>Po co?</li>
             <li>Obiektowość w praktyce</li>
-            <!--
-              // Tworzenie obiektów
-              //  {};
-              //  new Object();
-              //  Object.create(null);
-              // Definicja klasy
-
-                  Szkolenie z es6 było i kady pamięta jak definiuje się klasę
-
-                  class Shape {
-                    constructor() {
-                      this.x = 0;
-                      this.y = 0;
-                    }
-                    move(x, y) {
-                      this.x += x;
-                      this.y += y;
-                      console.info('Shape moved.');
-                    }
-                  }
-
-                  Obiekt tej klasy tworzy się poprzez
-                  let shape1 = new Shape();
-
-                  A metody tej klasy wywołujemy w ten sposób
-                  shape1.move(10, 10);
-
-              // Dziedziczenie
-                  Co jeżeli chcemy mieć kwadrat?
-
-                  class Square extends Shape {
-                    constructor() {
-                      super(); // Wywołanie konstruktora z Shape
-
-                      this.size = 10;
-                    }
-
-                    resize(size) {
-                      this.size = size;
-                    }
-                  }
-
-                  Tworzenie kwadratu
-                  let square1 = new Square();
-
-                  Wywołanie metody z Square
-                  square1.move(20, 20);
-
-               // Przesłanianie
-
-                   Chcemy narysować nasz kształt - definiujemy metodę draw
-
-                   class Shape {
-                     constructor() {
-                       this.x = 0;
-                       this.y = 0;
-                     }
-                     move(x, y) {
-                       this.x += x;
-                       this.y += y;
-                       console.info('Shape moved.');
-                     }
-                     draw(ctx) {
-                       ctx.fillRect(this.x, this.y, 1, 1);
-                     }
-                   }
-
-                   A co z kwadratem? Tam przecież dziedziczymy metodę draw.
-                   Możemy ją przesłonić.
-
-                   class Square extends Shape {
-                     constructor() {
-                       super(); // Wywołanie konstruktora z Shape
-
-                       this.size = 10;
-                     }
-                     resize(size) {
-                       this.size = size;
-                     }
-                     draw(ctx) {
-                       ctx.fillRect(this.x, this.y, this.size, this.size);
-                     }
-                   }
-
-                   Tworzenie kwadratu
-                   let square1 = new Square();
-
-                   Wywołanie metody draw z Square
-                   square1.draw(ctx);
-
-            -->
             <li>Singleton</li>
-            <!--// Napisać eveter oparty na DOM-->
+            <!--
+            Kreacyjny wzorzec projektowy, którego celem jest ograniczenie możliwości tworzenia obiektów danej klasy do jednej instancji oraz zapewnienie globalnego dostępu do stworzonego obiektu.
+            Tak mówią. Co to oznacza w praktyce? Oznacza to że z każdego miejsca
+            gdzie można importować moduł z Singletonem, mamy dostęp do tego samego obiektu.
+
+            <a href="/examples/singleton.html">Przykład live</a>
+
+
+
+
+            // Napisać eveter oparty na DOM
+            -->
+
             <li>Mediator</li>
             <!--// Dobrym przykladem estimationEdit.js
             // Wersja sprzed przerobienia na mediatora
             // Wersja po przerobieniu na mediatora
             // Wnioski-->
-            <li>Obserwator/Reactor</li>
+            <li>Reactor</li>
             <!--// EstimationEdit, Costs, i inne widgety
             // Wersja sprzed przerobienia na Obserwator
             // Wersja po przerobieuniu na obserwator
@@ -142,6 +67,8 @@
             <li>tbc</li>
           </ul>
         </section>
+
+        <!-- O CZYMNIE JEST -->
         <section>
           <h2>O czym nie jest</h2>
           <p>Dużo praktyki mało teorii</p>
@@ -164,6 +91,8 @@
             Wszystkie te elementy postaram się pokazać od strony praktycznej.
           </aside>
         </section>
+
+        <!-- PO CO? -->
         <section>
           <section>
             <h2>Po co?</h2>
@@ -293,6 +222,186 @@
             </aside>
           </section>
         </section>
+
+        <!-- OBIEKTOWOŚĆ W PRAKTYCE? -->
+        <section>
+          <section>
+            <h2>Obiektowość w praktyce</h2>
+            <p>Krótkie przypomnienie obiektowości w ES6</p>
+            <ul>
+              <li>Tworzenie obiektów</li>
+              <li>Definicja klasy</li>
+              <li>Dziedziczenie</li>
+              <li>Przesłanianie</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Tworzenie obiektów</h2>
+            <p>Kilka metod tworzenia obiektów</p>
+            <pre><code data-trim data-noescape>
+{}; // Object {}
+new Object(); // Object {}
+Object.create(null); // Object {} bez prototypu
+            </code></pre>
+            <aside class="notes">
+              W js istnieje kilka metod tworzenia nowych obiektów. Popularne {}
+              tworzą instancję klasy Object wraz z jej prototypem, tak samo jak
+              słowo kluczowe new.
+              Object.create(null) tworzy instancję klasy Object ale bez prototypu.
+            </aside>
+          </section>
+          <section>
+            <h2>Definicja klasy</h2>
+            <p>Przypomnienie definiowanie klasy w ES6</p>
+            <pre><code data-trim data-noescape>
+// Przykład klasy definiującej kształt
+class Shape {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+  }
+  move(x, y) {
+    this.x += x;
+    this.y += y;
+    console.info('Shape moved.');
+  }
+}
+
+// Tworzenie instancji klasy Shape
+let shape1 = new Shape();
+
+// Wywołanie metody klasy Shape na obiekcie shape1
+shape1.move(10, 10);
+            </code></pre>
+            <aside class="notes">
+              Szkolenie ES6 było więc tylko przypominam jak definiuje się klasę.
+              Shape jest nazwą naszej klasy, construktor jest metodą klasy która
+              wywołuje się podczas instancjalizacji klasy - czyli podczas tworzenia
+              nowego obiektu, innymi słowy tam gdzie jest napisane new Shape.
+              move równierz jest metodą klasy ale move nie wywołuje się podczas
+              tworzenia instancji. move możemy wywołać w odpowiednim dla nas momencie.
+              Czyli Shape jest klasą, new Shape() tworzy nam instancję klasy Shape.
+              shape1 jest obiektem typu Shape. A shape1.move jest wywołaniem metody.
+            </aside>
+          </section>
+          <section>
+            <h2>Dziedziczenie</h2>
+            <p>Ale ja chcę kwadrat!</p>
+            <pre><code data-trim data-noescape>
+// Przykład klasy definiującej kwadrat dziedziczącej po kształcie
+class Square extends Shape {
+  constructor() {
+    super(); // Wywołanie konstruktora z Shape - musi być przed thisem
+
+    this.size = 10; // Dodane pole określające wielkość
+  }
+
+  // Dodana metoda do zmiany wielkośći kwadratu
+  resize(size) {
+    this.size = size;
+  }
+}
+
+// Tworzenie kwadratu
+let square1 = new Square();
+
+// Wywołanie metody move na obiekcie square1
+square1.move(20, 20);
+
+// Wywołanie metody resize na obiekcie square1
+square1.resize(20);
+            </code></pre>
+            <aside class="notes">
+              Co w momencie kiedy chcemy mieć kwadrat a nie chcemy duplikować
+              kodu pozycji który jest wewnątrz klasy Shape? Używamy słowa kluczowego
+              extends i dziedziczymy po klasie Shape. W na pierwszy rzut oka
+              tego nie widać ale ta klasa będzie posiadała pole zarówno size jak
+              i x oraz y odziedziczone z Shape. Odziedziczyła równierz metodę
+              move. [przekleić do konsoli]
+            </aside>
+          </section>
+          <section>
+            <h2>Przesłanianie</h2>
+            <p>A co jeśli chcemy narysować Shape i Square. Dwie różne metody?</p>
+
+            <pre><code data-trim data-noescape>
+// Przykład klasy definiującej kształt
+class Shape {
+  constructor() {
+    this.x = 0;
+    this.y = 0;
+  }
+  move(x, y) {
+    this.x += x;
+    this.y += y;
+    console.info('Shape moved.');
+  }
+  // Metoda do rysowania kształtu
+  draw(ctx) {
+     console.log(`${ctx}.fillRect(${this.x}, ${this.y}, 1, 1);`);
+  }
+}
+
+// Tworzenie instancji klasy Shape
+let shape1 = new Shape();
+
+// Wywołanie metody draw klasy Shape na obiekcie shape1
+shape1.draw();
+
+
+// Przykład klasy definiującej kwadrat dziedziczącej po kształcie
+class Square extends Shape {
+  constructor() {
+    super(); // Wywołanie konstruktora z Shape - musi być przed thisem
+
+    this.size = 10; // Dodane pole określające wielkość
+  }
+
+  // Dodana metoda do zmiany wielkośći kwadratu
+  resize(size) {
+    this.size = size;
+  }
+  // Przesłonięta metoda do rysowania kształtu
+  draw(ctx) {
+    console.log(`${ctx}.fillRect(${this.x}, ${this.y}, ${this.size}, ${this.size});`);
+  }
+}
+
+// Tworzenie kwadratu
+let square1 = new Square();
+
+// Wywołanie metody draw klasy Square na obiekcie square1
+square1.draw();
+            </code></pre>
+
+            <aside class="notes">
+              Mamy kształt mamy kwadrat chcemy je zobaczyć na canvasie przykładowo.
+              Nie będziemy specjaline po to definiować oddzielnych metod dla
+              Kształtu i dla Kwadratu. Potem chcąc wywołać rysowanie każdego z elementów
+              w pętli musieli byśmy pamiętać o warunkach - jeżeli kształt to taka metoda,
+              jeżeli kwadrat to taka. Korzystając z przesłonięcia metody możemy
+              później wszystkie kształty - czy to kształt czy to kwadrat trzymać
+              wewnątrz jednej pętli i nie musimy się zastanawiać jaką metodę wywołać.
+            </aside>
+          </section>
+          <section>
+            <h2>I właśnie po to są wzorce</h2>
+            <p>
+              Czasem nawet najładniej napisany kod nie obędzie się bez wzorców.
+            </p>
+            <aside class="notes">
+              Po co o tym mowię? Przecież to szkolenie o wzorcach.
+              Ponieważ mimo zastosowania wszystkich
+              wspomnianych zabiegów okazało się że to i tak za mało aby utrzymać
+              pełą kontrolę nad przepływem informacji pomiędzy obiektami.
+              Mówię tutaj nie tylko o czytelnym ale też o logicznie poprawnym
+              kodzie.
+
+              Z pomocą przyszły wzorce projektowe.
+            </aside>
+          </section>
+        </section>
+
         <section>
           <h2>Źródło</h2>
           <a href="https://developer.mozilla.org/pl/docs/Web/JavaScript">MDN</a>
