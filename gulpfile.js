@@ -46,7 +46,8 @@ let logGray = chalk.gray;
 // filename, use jstify
 let browserifyFiles = [
   ['example1.js'],
-  ['example2.js']
+  ['example2.js'],
+  ['example3.js']
 ];
 
 let browserifyTasks = [];
